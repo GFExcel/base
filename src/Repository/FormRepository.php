@@ -2,6 +2,10 @@
 
 namespace GFExcel\Repository;
 
+/**
+ * Repository to retrieve all information for a form.
+ * @since $ver$
+ */
 class FormRepository implements FormRepositoryInterface
 {
     /**
@@ -13,7 +17,7 @@ class FormRepository implements FormRepositoryInterface
 
     /**
      * FormRepository constructor.
-     * @param \GFAPI $api
+     * @param \GFAPI $api A Gravity Forms API instance.
      */
     public function __construct(\GFAPI $api)
     {
@@ -51,5 +55,15 @@ class FormRepository implements FormRepositoryInterface
                 $loop = false; // stop looping
             }
         }
+    }
+
+   /**
+    * {@inheritdoc}
+    * @since $ver$
+    * @todo: implement.
+    */
+    public function getDownloadUrl(int $form_id): ?string
+    {
+       return null;
     }
 }

@@ -11,10 +11,18 @@ interface FormRepositoryInterface
      * the default entry array Gravity Forms returns.
      *
      * @since $ver$
-     * @param int $form_id
-     * @param array $search_criteria
-     * @param array $sorting
-     * @return iterable All entries for a form.
+     * @param int $form_id The form id to retrieve the entries from.
+     * @param string[] $search_criteria (Optional) search criteria.
+     * @param string [] $sorting (Optinal) sorting criteria.
+     * @return mixed[]|iterable All entries for a form.
      */
     public function getEntries(int $form_id, array $search_criteria = [], array $sorting = []): iterable;
+
+    /**
+     * Should return the download url of the form.
+     * @since $ver$
+     * @param int $form_id The form id to retrieve the url for.
+     * @return string|null The url, or null if not avaialbe.
+     */
+    public function getDownloadUrl(int $form_id): ?string;
 }

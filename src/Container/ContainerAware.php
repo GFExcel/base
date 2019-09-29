@@ -5,6 +5,10 @@ namespace GFExcel\Container;
 use League\Container\Container;
 use Psr\Container\ContainerInterface;
 
+/**
+ * Trait that makes a class contiainer aware.
+ * @since $ver$
+ */
 trait ContainerAware
 {
     /**
