@@ -1,0 +1,29 @@
+{
+  "name": "gfexcel/base",
+  "description": "Base for Gravity Forms Entries in Excel (Pro)",
+  "type": "library",
+  "require-dev": {
+    "phpunit/phpunit": "^8.3"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Doeke Norg",
+      "email": "info@gfexcel.com"
+    }
+  ],
+  "require": {
+    "league/container": "^3.3",
+    "phpoffice/phpspreadsheet": "^1.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "GFExcel\\" : "./src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "GFExcel\\Tests\\": "./tests"
+    }
+  }
+}
