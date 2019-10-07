@@ -2,11 +2,14 @@
 
 namespace GFExcel\AddOn;
 
+use GFExcel\Action\ActionAware;
+use GFExcel\Action\ActionInterface;
+use GFExcel\Contract\ActionAwareInteface;
 use GFExcel\Language\Translate;
 
-abstract class AbstractGFExcelAddon extends \GFAddon
+abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareInteface
 {
-    use Translate;
+    use Translate, ActionAware;
 
     /**
      * Holds the instance of the add-on.
@@ -58,13 +61,11 @@ abstract class AbstractGFExcelAddon extends \GFAddon
                 return false;
             }
 
-            $method = $this->getActionMethodName();
-            if ($method && method_exists($this, $method) && is_callable([$this, $method])) {
-                $this->$method($form);
+            if ($action = $this->getActionClass()) {
+                // run action
+                $action->fire($this, $form);
             } else {
-                \GFCommon::add_error_message($this->translate(
-                    sprintf('This action is not implemented.', $method)
-                ));
+                \GFCommon::add_error_message($this->translate('This action is not implemented.'));
             }
         }
     }
@@ -72,15 +73,14 @@ abstract class AbstractGFExcelAddon extends \GFAddon
     /**
      * Generates a possible method name for a given action. eg. `enable-stuff` becomes `actionEnableStuff`.
      * @since $ver$
-     * @return string|null The method name.
+     * @return ActionInterface|null The action.
      */
-    protected function getActionMethodName(): ?string
+    protected function getActionClass(): ?ActionInterface
     {
         if (!rgempty('gfexcel-action')) {
-            $value = rgpost('gfexcel-action');
-
-            if (!empty($value) && $actions = preg_split('/[^a-z0-9]+/is', $value)) {
-                return 'action' . implode(array_map('ucfirst', $actions));
+            $action = rgpost('gfexcel-action');
+            if ($this->hasAction($action)) {
+                return $this->getAction($action);
             }
         }
 
