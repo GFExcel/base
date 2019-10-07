@@ -2,7 +2,7 @@
 
 namespace GFExcel\DependencyInjection;
 
-use GFExcel\Contract\ActionAwareInteface;
+use GFExcel\Action\ActionAwareInteface;
 use GFExcel\Repository\FormRepository;
 use GFExcel\Repository\FormRepositoryInterface;
 use League\Container\ServiceProvider\AbstractServiceProvider;

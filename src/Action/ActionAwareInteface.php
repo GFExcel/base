@@ -1,6 +1,6 @@
 <?php
 
-namespace GFExcel\Contract;
+namespace GFExcel\Action;
 
 use GFExcel\Action\ActionInterface;
 

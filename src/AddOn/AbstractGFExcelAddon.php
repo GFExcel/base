@@ -4,7 +4,7 @@ namespace GFExcel\AddOn;
 
 use GFExcel\Action\ActionAware;
 use GFExcel\Action\ActionInterface;
-use GFExcel\Contract\ActionAwareInteface;
+use GFExcel\Action\ActionAwareInteface;
 use GFExcel\Language\Translate;
 
 abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareInteface
