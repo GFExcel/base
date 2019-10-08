@@ -16,6 +16,7 @@ interface ActionInterface
     /**
      * Proforms the action.
      * @since $ver$
+     * @param AbstractGFExcelAddon $addon The AddOn instance.
      * @param array $form The form object.
      */
     public function fire(AbstractGFExcelAddon $addon, array $form): void;

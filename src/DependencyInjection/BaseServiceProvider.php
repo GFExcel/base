@@ -3,6 +3,7 @@
 namespace GFExcel\DependencyInjection;
 
 use GFExcel\Action\ActionAwareInteface;
+use GFExcel\Action\ActionInterface;
 use GFExcel\Repository\FormRepository;
 use GFExcel\Repository\FormRepositoryInterface;
 use League\Container\ServiceProvider\AbstractServiceProvider;
@@ -28,14 +29,18 @@ class BaseServiceProvider extends AbstractServiceProvider
         $container->add(
             FormRepositoryInterface::class,
             FormRepository::class
-        )->addArgument(new \GFAPI());
-
-
+        )->addArgument(\GFAPI::class);
+        
         $container
             ->inflector(ActionAwareInteface::class)
             ->invokeMethod('setActions', [$this->getActions()]);
     }
 
+    /**
+     * Retrieve all tagged actions from the container.
+     * @since $ver$
+     * @return ActionInterface[]
+     */
     protected function getActions(): array
     {
         $container = $this->getLeagueContainer();

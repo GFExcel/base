@@ -2,6 +2,8 @@
 
 namespace GFExcel\Repository;
 
+use GFExcel\AddOn\AbstractGFExcelAddon;
+
 /**
  * Repository to retrieve all information for a form.
  * @since $ver$
@@ -13,7 +15,7 @@ class FormRepository implements FormRepositoryInterface
      * @since $ver$
      * @var \GFAPI
      */
-    protected $api;
+    private $api;
 
     /**
      * FormRepository constructor.
@@ -57,13 +59,17 @@ class FormRepository implements FormRepositoryInterface
         }
     }
 
-   /**
-    * {@inheritdoc}
-    * @since $ver$
-    * @todo: implement.
-    */
-    public function getDownloadUrl(int $form_id): ?string
+    /**
+     * {@inheritdoc}
+     * @since $ver$
+     * @todo: implement.
+     */
+    public function getDownloadUrl(array $settings): ?string
     {
-       return null;
+        if (!$hash = $settings['hash'] ?? null) {
+            return null;
+        }
+
+        return sprintf('%s/%s', 'some_url', $hash);
     }
 }

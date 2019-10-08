@@ -71,6 +71,26 @@ abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareIntef
     }
 
     /**
+     * Helper function that add's (and translates) a message.
+     * @since $ver$
+     * @param string $message The message.
+     */
+    public function add_message(string $message): void
+    {
+        \GFCommon::add_message($this->translate($message));
+    }
+
+    /**
+     * Helper function that add's (and translates) an error message.
+     * @since $ver$
+     * @param string $message The errorr message.
+     */
+    public function add_error_message(string $message): void
+    {
+        \GFCommon::add_error_message($this->translate($message));
+    }
+
+    /**
      * Generates a possible method name for a given action. eg. `enable-stuff` becomes `actionEnableStuff`.
      * @since $ver$
      * @return ActionInterface|null The action.
@@ -179,7 +199,10 @@ abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareIntef
     public function settings_button(array $field, bool $echo = true): string
     {
         $field['type'] = 'submit';
-        $field['class'] = 'button-primary gfbutton';
+
+        if (!rgar($field, 'class')) {
+            $field['class'] = 'button-primary gfbutton';
+        }
 
         if (!rgar($field, 'label')) {
             $field['label'] = esc_html__('Update Settings', 'gravityforms');
@@ -221,10 +244,61 @@ abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareIntef
 
     /**
      * {@inheritdoc}
+     * Makes sure the returned form object is fresh.
+     * @since $ver$
+     */
+    public function get_form_settings($form)
+    {
+        return parent::get_form_settings($this->getFreshForm($form));
+    }
+
+
+    /**
+     * {@inheritdoc}
+     * Fix returning of posted values of fields without a name.
+     * @since $ver$
+     */
+    public function get_posted_settings(): array
+    {
+        $settings = parent::get_posted_settings();
+        unset($settings['']); // remove empty name field.
+        return $settings;
+    }
+
+    /**
+     * {@inheritdoc}
      * @since $ver$
      */
     public function render_uninstall(): void
     {
         // disable uninstall text.
+    }
+
+    /**
+     * {@inheritdoc}
+     * @since $ver$
+     */
+    public function add_default_save_button($sections)
+    {
+        // prevents adding unwanted default save button.
+        return $sections;
+    }
+
+    /**
+     * Refreshes a form object if needed.
+     * @since $ver$
+     * @param array $form The form object.
+     * @return array A fresh Form object.
+     */
+    public function getFreshForm(array $form): array
+    {
+        // Settings might have changed during a postback, so cannot trust $form.
+        if ($this->is_postback()) {
+            $form = $this->get_current_form();
+            $form_id = $form['id'];
+            $form = gf_apply_filters(array('gform_admin_pre_render', $form_id), $form);
+        }
+
+        return $form;
     }
 }

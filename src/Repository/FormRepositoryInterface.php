@@ -21,8 +21,8 @@ interface FormRepositoryInterface
     /**
      * Should return the download url of the form.
      * @since $ver$
-     * @param int $form_id The form id to retrieve the url for.
+     * @param array $settings The settings for a form.
      * @return string|null The url, or null if not avaialbe.
      */
-    public function getDownloadUrl(int $form_id): ?string;
+    public function getDownloadUrl(array $settings): ?string;
 }
