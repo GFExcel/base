@@ -18,7 +18,7 @@ trait ActionAware
     public function setActions(array $actions): void
     {
         $this->actions = array_reduce($actions, static function (array $actions, ActionInterface $action): array {
-            return array_merge($actions, [$action::getName() => $action]);
+            return array_merge($actions, [$action->getName() => $action]);
         }, []);
     }
 

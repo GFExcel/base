@@ -15,7 +15,7 @@ abstract class AbstractAction implements ActionInterface
      * {@inheritdoc}
      * @since $ver$
      */
-    public static function getName(): string
+    public function getName(): string
     {
         if (empty(static::$name)) {
             throw new \LogicException(sprintf(
