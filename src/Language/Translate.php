@@ -13,7 +13,7 @@ trait Translate
      */
     public function translate(string $text, bool $is_html_save = false): string
     {
-        $translation = __($text, 'gfexcel');
+        $translation = __($text, 'gf-entries-in-excel');
 
         return $is_html_save ? esc_html($translation) : $translation;
     }

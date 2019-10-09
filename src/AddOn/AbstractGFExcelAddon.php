@@ -5,11 +5,13 @@ namespace GFExcel\AddOn;
 use GFExcel\Action\ActionAware;
 use GFExcel\Action\ActionInterface;
 use GFExcel\Action\ActionAwareInteface;
+use GFExcel\Contract\TemplateAwareInterface;
 use GFExcel\Language\Translate;
+use GFExcel\Template\TemplateAware;
 
-abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareInteface
+abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareInteface, TemplateAwareInterface
 {
-    use Translate, ActionAware;
+    use Translate, ActionAware, TemplateAware;
 
     /**
      * Holds the instance of the add-on.
@@ -220,7 +222,7 @@ abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareIntef
             esc_attr($field['name']),
             esc_attr($field['value']),
             implode(' ', $attributes),
-            esc_attr($field['label']),
+            esc_attr($field['label'])
         );
 
         if ($echo) {
@@ -252,6 +254,15 @@ abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareIntef
         return parent::get_form_settings($this->getFreshForm($form));
     }
 
+    /**
+     * {@inheritdoc}
+     * Set the title of the AddOn on the form settings page.
+     * @since $ver$
+     */
+    public function form_settings_page_title()
+    {
+        return $this->plugin_page_title();
+    }
 
     /**
      * {@inheritdoc}
@@ -263,6 +274,24 @@ abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareIntef
         $settings = parent::get_posted_settings();
         unset($settings['']); // remove empty name field.
         return $settings;
+    }
+
+    /**
+     * {@inheritdoc}
+     * Tries to locate a field template before falling back to the original function.
+     * This makes it way easier to implement a custom field.
+     *
+     * @since $ver$
+     */
+    public function single_setting($field)
+    {
+        $template = 'field/' . $field['type'];
+        if ($this->hasTemplate($template)) {
+            $field['attributes'] = $this->get_field_attributes($field);
+            $this->renderTemplate($template, $field);
+        } else {
+            parent::single_setting($field);
+        }
     }
 
     /**
@@ -300,5 +329,15 @@ abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareIntef
         }
 
         return $form;
+    }
+
+    /**
+     * Get the assets path
+     * @since $ver$
+     * @return string The assets path.
+     */
+    public static function assets(): string
+    {
+        return plugin_dir_url(GFEXCEL_PLUGIN_FILE);
     }
 }
