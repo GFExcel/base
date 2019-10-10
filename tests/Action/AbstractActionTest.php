@@ -14,18 +14,30 @@ class AbstractActionTest extends TestCase
      */
     public function testGetName()
     {
-        $this->assertEquals('concrete', (new ConcreteAction())->getName());
+        $this->assertEquals('concrete', (new ConcreteAction('concrete'))->getName());
+    }
+
+    /**
+     * Test case for {@see AbstractAction::getName} with a missing name.
+     * @since $ver$
+     */
+    public function testGetNameWithException()
+    {
+        $this->expectExceptionMessage(sprintf('Action "%s" should implement a $name variable.', ConcreteAction::class));
+        $this->assertEquals('concrete', (new ConcreteAction(''))->getName());
     }
 }
 
 class ConcreteAction extends AbstractAction
 {
     /**
-     * The name the action must have.
-     * @since $ver$
-     * @var string
+     * Helper constructor to set the name of the action.
+     * @param string $name
      */
-    protected static $name = 'concrete';
+    public function __construct(string $name)
+    {
+        self::$name = $name;
+    }
 
     /**
      * {@inheritdoc}

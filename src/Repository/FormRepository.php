@@ -2,8 +2,6 @@
 
 namespace GFExcel\Repository;
 
-use GFExcel\AddOn\AbstractGFExcelAddon;
-
 /**
  * Repository to retrieve all information for a form.
  * @since $ver$
