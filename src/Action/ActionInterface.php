@@ -11,10 +11,10 @@ interface ActionInterface
      * @since $ver$
      * @return string The name.
      */
-    public function getName(): string;
+    public static function getName(): string;
 
     /**
-     * Proforms the action.
+     * Performs the action.
      * @since $ver$
      * @param AbstractGFExcelAddon $addon The AddOn instance.
      * @param array $form The form object.

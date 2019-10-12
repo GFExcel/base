@@ -203,7 +203,7 @@ abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareIntef
         $field['type'] = 'submit';
 
         if (!rgar($field, 'class')) {
-            $field['class'] = 'button-primary gfbutton';
+            $field['class'] = 'button-primary';
         }
 
         if (!rgar($field, 'label')) {
@@ -330,6 +330,28 @@ abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareIntef
 
         return $form;
     }
+
+    /**
+     * Returns the fields of this form formatted for a select field.
+     * @since $ver$
+     * @param mixed[] $form The form object.
+     * @return string[][] The sort options.
+     */
+    public function sortFieldOptions(array $form): array
+    {
+        return array_merge([
+            [
+                'value' => 'date_created',
+                'label' => $this->translate('Date of entry', true),
+            ]
+        ], array_map(function ($field) {
+            return [
+                'value' => $field->id,
+                'label' => $field->label,
+            ];
+        }, (array) $form['fields']));
+    }
+
 
     /**
      * Get the assets path
