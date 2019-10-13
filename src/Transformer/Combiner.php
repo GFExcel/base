@@ -24,36 +24,36 @@ class Combiner implements FieldInterface
      */
     public function __construct(array $fields)
     {
-        $c = 0;
+        // always start at zero.
+        $column_index = 0;
+
         foreach ($fields as $field) {
+            // Add columns to the internal array.
             $this->columns = array_merge($this->columns, $field->getColumns());
+            $field_column_count = count($field->getColumns());
 
-            $fc = count($field->getColumns());
-
-            foreach ($field->getRows() as $i => $row) {
+            // Iterate every row a field returns.
+            $i = 0;
+            foreach ($field->getRows() as $row) {
+                // Initialize row if it doesn't exist yet.
                 if (!isset($this->rows[$i])) {
                     $this->rows[$i] = [];
                 }
-                if (count($this->rows[$i]) < $c) {
-                    for ($x = count($this->rows[$i]); $x < $c; $x++) {
-                        $this->rows[$i][] = null;
-                    }
-                }
+
+                $this->fillMissingColumns($i, $column_index);
+                // Merge values with the current row.
                 $this->rows[$i] = array_merge($this->rows[$i], $row);
+                $i++;
             }
 
-            $c += $fc;
+            // Keep track of the current column count.
+            $column_index += $field_column_count;
         }
 
+        // Now that we have all rows and data, fill out the remaining missing cells.
         foreach ($this->rows as $i => $row) {
-            $columns = count($row);
-            if ($columns < $c) {
-                for ($x = $columns; $x < $c; $x++) {
-                    $this->rows[$i][] = null;
-                }
-            }
+            $this->fillMissingColumns($i, $column_index);
         }
-
     }
 
     /**
@@ -67,12 +67,31 @@ class Combiner implements FieldInterface
     }
 
     /**
-     * Returns the rows, containing all the cells, for every field.
+     * {@inheritdoc}
+     * Yields the rows, containing all the cells, for every field.
      * @since $ver$
-     * @return mixed[][] The cell data.
+     * @return iterable|\Generator|mixed[]
      */
-    public function getRows(): array
+    public function getRows(): iterable
     {
-        return $this->rows;
+        foreach ($this->rows as $row) {
+            yield $row;
+        }
+    }
+
+    /**
+     * Fills out any missing cells up to this point with `null`.
+     * @since $ver$
+     * @param int $row The row id to fill out.
+     * @param int $total The total count of fields for the row.
+     */
+    private function fillMissingColumns(int $row, int $total): void
+    {
+        $length = count($this->rows[$row]);
+        if ($length < $total) {
+            for ($x = $length; $x < $total; $x++) {
+                $this->rows[$row][] = null;
+            }
+        }
     }
 }

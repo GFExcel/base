@@ -6,6 +6,10 @@ use GFExcel\Transformer\Combiner;
 use GFExcel\Transformer\FieldInterface;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Test case for {@see Combiner}.
+ * @since $ver$
+ */
 class CombinerTest extends TestCase
 {
     /**
@@ -37,7 +41,7 @@ class CombinerTest extends TestCase
                     ['1', '2'],
                 ],
             ],
-            'multiple' => [
+            'multiple_pre_fill' => [
                 [
                     new ConcreteField(['A'], [['1']]),
                     new ConcreteField(['B'], [['2'], ['3']]),
@@ -47,7 +51,7 @@ class CombinerTest extends TestCase
                     [null, 3],
                 ],
             ],
-            'multiple_with_outfill' => [
+            'multiple_post_fill' => [
                 [
                     new ConcreteField(['A'], [['1'], ['3']]),
                     new ConcreteField(['B'], [['2']]),
@@ -57,20 +61,19 @@ class CombinerTest extends TestCase
                     [3, null],
                 ],
             ],
-            'ultimate_test' => [
+            'multiple_pre_post_fill' => [
                 [
-                    new ConcreteField(['A'], [['1'], ['3']]),
-                    new ConcreteField(['B'], [['2']]),
-                    new ConcreteField(['C'], [['4'], ['6'], ['7'], ['8']]),
-                    new ConcreteField(['D'], [[], ['9']]),
-                    new ConcreteField(['E', 'F'], [['5', '10'], [], [], ['11', '12']]),
+                    new ConcreteField(['A'], [['1'], ['2']]),
+                    new ConcreteField(['B'], [['3']]),
+                    new ConcreteField(['C'], [['4'], ['5'], ['6']]),
+                    new ConcreteField(['D'], [['7']]),
+                    new ConcreteField(['E', 'F'], [['8', '9'], ['10', '11']]),
                 ],
                 [
                     //A   B    C    D     E     F
-                    ['1', '2', '4', null, '5', '10'],
-                    ['3', null, '6', '9', null, null],
-                    [null, null, '7', null, null, null],
-                    [null, null, '8', null, '11', '12'],
+                    ['1', '3', '4', '7', '8', '9'],
+                    ['2', null, '5', null, '10', '11'],
+                    [null, null, '6', null, null, null],
                 ],
             ]
         ];
@@ -85,7 +88,24 @@ class CombinerTest extends TestCase
      */
     public function testGetRows(array $fields, array $expected)
     {
-        $this->assertEquals($expected, (new Combiner($fields))->getRows());
+        $this->assertEquals($expected, iterator_to_array((new Combiner($fields))->getRows()));
+    }
+
+    /**
+     * Test case for {@see Combiner::getRows} with a combiner being combined.
+     *
+     * Since a combiner is a {@see FieldInterface} instance, it should be able to combine a combiner.
+     *
+     * @since $ver$
+     */
+    public function testGetRowsWithCombinerField()
+    {
+        $field1 = new ConcreteField(['A'], [['1']]);
+        $field2 = new ConcreteField(['B', 'C'], [['2', '3']]);
+        $combiner_fields = new Combiner([$field1, $field2]);
+        $combiner_combiner = new Combiner([$combiner_fields]);
+
+        $this->assertEquals([['1','2','3']], iterator_to_array($combiner_combiner->getRows()));
     }
 }
 
@@ -113,8 +133,11 @@ class ConcreteField implements FieldInterface
         return $this->columns;
     }
 
-    public function getRows(): array
+    public function getRows(): iterable
     {
-        return $this->rows;
+        // Yielding results to make sure the combiner can take generators.
+        foreach ($this->rows as $row) {
+            yield $row;
+        };
     }
 }
