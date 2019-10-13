@@ -11,7 +11,7 @@ interface ActionInterface
      * @since $ver$
      * @return string The name.
      */
-    public static function getName(): string;
+    public function getName(): string;
 
     /**
      * Performs the action.

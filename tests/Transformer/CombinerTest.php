@@ -63,13 +63,14 @@ class CombinerTest extends TestCase
                     new ConcreteField(['B'], [['2']]),
                     new ConcreteField(['C'], [['4'], ['6'], ['7'], ['8']]),
                     new ConcreteField(['D'], [[], ['9']]),
-                    new ConcreteField(['E', 'F'], [['5', '10']]),
+                    new ConcreteField(['E', 'F'], [['5', '10'], [], [], ['11', '12']]),
                 ],
                 [
+                    //A   B    C    D     E     F
                     ['1', '2', '4', null, '5', '10'],
                     ['3', null, '6', '9', null, null],
                     [null, null, '7', null, null, null],
-                    [null, null, '8', null, null, null],
+                    [null, null, '8', null, '11', '12'],
                 ],
             ]
         ];
