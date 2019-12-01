@@ -1,0 +1,355 @@
+.gaddon-setting-inline {
+  display: inline-block;
+  line-height: 26px;
+}
+
+span.gf_settings_description {
+  font-size: smaller;
+}
+
+ul.fields-select {
+  background-color: #FFF;
+  padding: 3px 5px;
+  border: 1px solid #E1E1E1;
+  min-height: 30px;
+}
+
+ul.fields-select li div:not(.move) {
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
+ul.fields-select li div.move {
+  font-weight: bold;
+  padding: 0 5px;
+  cursor: pointer;
+}
+
+ul.fields-select li div.move :hover {
+  color: #006799;
+}
+
+.ui-sortable-handle {
+  cursor: pointer;
+  cursor: -webkit-grab;
+}
+
+.ui-sortable-helper {
+  cursor: -webkit-grabbing;
+}
+
+ul.fields-select li {
+  display: -webkit-box;
+  display: flex;
+  background-color: #f7f7f7;
+  margin: 2px 0;
+  padding: 3px;
+  -webkit-transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+  transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+.gaddon-section.sortfields table {
+  table-layout: fixed;
+}
+
+.gaddon-section.sortfields table td {
+  padding-right: 10px;
+}
+
+.gaddon-section.sortfields table td + td {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.gaddon-section.sortfields p {
+  margin-bottom: 10px;
+}
+
+.sortfields .fa-bars {
+  color: #DDD;
+  margin-right: 5px;
+}
+
+.sortfields .field {
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+.sortfields li.light-up {
+  background-color: #006799;
+  color: #FFF;
+}
+
+.sortfields li.light-up i {
+  color: #fff;
+}
+
+#gfexcel_disabled_fields .move i.fa-close,
+#gfexcel_enabled_fields .move i.fa-arrow-right {
+  display: none;
+}
+
+.button.button-cta {
+  background: #5cb85c;
+  border-color: #4cae4c;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 #4cae4c;
+  color: #fff;
+  text-shadow: 0 -1px 1px #4cae4c, 1px 0 1px #4cae4c, 0 1px 1px #4cae4c, -1px 0 1px #4cae4c;
+}
+
+.button.button-cta:hover,
+.button.button-cta:focus,
+.button.button-cta:active {
+  background: #4cae4c;
+  border-color: #4cae4c;
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 #4cae4c;
+}
+
+.button.button-danger {
+  background: #cc0000;
+  border-color: #A00000;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 #A00000;
+  color: #fff;
+  text-shadow: 0 -1px 1px #A00000, 1px 0 1px #A00000, 0 1px 1px #A00000, -1px 0 1px #A00000;
+}
+
+.button.button-danger:hover,
+.button.button-danger:focus,
+.button.button-danger:active {
+  background: #A00000;
+  border-color: #A00000;
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 #A00000;
+}
+
+.download-block {
+  display: -webkit-box;
+  display: flex;
+}
+
+.download-block .date-field {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+}
+
+.download-block .date-field input {
+  width: 120px;
+}
+
+.download-block .date-field button {
+  outline: none !important;
+}
+
+#tab_gfentries-in-excel {
+  margin: -10px 0;
+  color: #364449;
+  font-size: 14px;
+  line-height: 1.5rem;
+}
+
+#tab_gfentries-in-excel .mr-1 {
+  margin-right: 4px;
+}
+
+#tab_gfentries-in-excel .mr-2 {
+  margin-right: 8px;
+}
+
+#tab_gfentries-in-excel .gaddon-setting-radio {
+  margin-bottom: 5px;
+}
+
+#tab_gfentries-in-excel table.gforms_form_settings th {
+  color: #364449;
+  width: 250px;
+  padding-left: 0;
+  padding-top: 12px;
+}
+
+#tab_gfentries-in-excel .gform_panel > h3 {
+  padding: 10px 0;
+  margin-bottom: 0;
+}
+
+#tab_gfentries-in-excel .gf_settings_description {
+  color: #8a9fa8;
+  margin-top: 0;
+}
+
+#tab_gfentries-in-excel label {
+  color: #8a9fa8;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+#tab_gfentries-in-excel h4.gf_settings_subgroup_title {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+#tab_gfentries-in-excel .gaddon-section {
+  padding: 10px 0;
+  margin-bottom: 0;
+}
+
+#tab_gfentries-in-excel button,
+#tab_gfentries-in-excel input,
+#tab_gfentries-in-excel select,
+#tab_gfentries-in-excel textarea,
+#tab_gfentries-in-excel .gfexcel_select {
+  font-size: 14px;
+  line-height: 1.5rem;
+  border-radius: 0.25rem;
+  height: auto;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  margin-bottom: 4px;
+  margin-right: 4px;
+}
+
+#tab_gfentries-in-excel input,
+#tab_gfentries-in-excel textarea,
+#tab_gfentries-in-excel select {
+  border: 1px solid #c4cfd4;
+}
+
+#tab_gfentries-in-excel input:focus,
+#tab_gfentries-in-excel textarea:focus,
+#tab_gfentries-in-excel select:focus {
+  box-shadow: none;
+  outline: none;
+  border: 1px solid #8a9fa8;
+}
+
+#tab_gfentries-in-excel input[readonly],
+#tab_gfentries-in-excel textarea[readonly],
+#tab_gfentries-in-excel select[readonly] {
+  background-color: #e2e7e9;
+}
+
+#tab_gfentries-in-excel input[type=checkbox],
+#tab_gfentries-in-excel input[type=radio] {
+  height: 18px;
+  width: 18px;
+}
+
+#tab_gfentries-in-excel input[type=checkbox]::before {
+  margin: -2px 0 0 -3px;
+}
+
+#tab_gfentries-in-excel input[type=radio]::before {
+  margin: 5px;
+}
+
+#tab_gfentries-in-excel input[type=radio] {
+  border-radius: 50%;
+}
+
+#tab_gfentries-in-excel .gaddon-setting-radio,
+#tab_gfentries-in-excel .gaddon-setting-checkbox {
+  display: -webkit-box;
+  display: flex;
+}
+
+#tab_gfentries-in-excel .gaddon-setting-radio label,
+#tab_gfentries-in-excel .gaddon-setting-checkbox label {
+  color: #5c6a70;
+  margin-top: -2px;
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
+#tab_gfentries-in-excel .gaddon-select {
+  width: auto;
+}
+
+#tab_gfentries-in-excel button {
+  box-shadow: none;
+  outline: none;
+}
+
+#tab_gfentries-in-excel button,
+#tab_gfentries-in-excel input,
+#tab_gfentries-in-excel textarea,
+#tab_gfentries-in-excel select {
+  padding: 0.25rem 0.75rem;
+}
+
+#tab_gfentries-in-excel .gfexcel_select {
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
+  background-color: #FFF;
+  border-radius: 0.25em;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#tab_gfentries-in-excel .gfexcel_select .gfexcel_select__arrow {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 2rem;
+  background-color: #e2e7e9;
+  border-radius: 0 0.2em 0.2em 0;
+  display: -webkit-box;
+  display: flex;
+  color: #5c6a70;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+#tab_gfentries-in-excel .gfexcel_select select {
+  cursor: pointer;
+  padding-right: 2.75rem;
+  margin: 0;
+  z-index: 1;
+  box-shadow: none;
+  position: relative;
+  background: transparent;
+}
+
+#gaddon-setting-row-download_url button {
+  margin-top: 8px;
+  margin-right: 8px;
+}
+
+#gaddon-setting-row-download_count div {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+#gaddon-setting-row-download_count div p {
+  margin: 0;
+  display: -webkit-inline-box;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+}
+
+#gaddon-setting-row-download_count div span {
+  font-size: 16px;
+}
+
+#gaddon-setting-row-download_count div span + span {
+  color: #8a9fa8;
+  font-size: 14px;
+}
+
+#gaddon-setting-row-download_count div button {
+  margin-left: 8px;
+}
+

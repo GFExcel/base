@@ -2,7 +2,7 @@
 
 namespace GFExcel\Generator;
 
-use GFExcel\Contract\HashGeneratorInterface;
+use GFExcel\Generator\HashGeneratorInterface;
 
 class HashGenerator implements HashGeneratorInterface
 {

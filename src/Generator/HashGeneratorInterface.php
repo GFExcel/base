@@ -1,6 +1,6 @@
 <?php
 
-namespace GFExcel\Contract;
+namespace GFExcel\Generator;
 
 interface HashGeneratorInterface
 {

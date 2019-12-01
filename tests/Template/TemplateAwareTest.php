@@ -5,6 +5,10 @@ namespace GFExcel\Tests\Template;
 use GFExcel\Template\TemplateAware;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Test class for {@see TemplateAware} trait.
+ * @since $ver$
+ */
 class TemplateAwareTest extends TestCase
 {
     /**
@@ -14,10 +18,16 @@ class TemplateAwareTest extends TestCase
      */
     private $trait;
 
+    /**
+     * {@inheritdoc}
+     * @since $ver$
+     */
     protected function setUp(): void
     {
         parent::setUp();
-        $this->trait = new ConcreteTemplateAware();
+        $this->trait = new class {
+          use TemplateAware;
+        };
 
         $this->trait->addTemplateFolder(__DIR__ . '/assets/folder1');
         $this->trait->addTemplateFolder(__DIR__ . '/assets/folder2');
@@ -94,9 +104,4 @@ class TemplateAwareTest extends TestCase
         $this->expectOutputString($expected_content);
         $this->trait->renderTemplate($template, $context);
     }
-}
-
-class ConcreteTemplateAware
-{
-    use TemplateAware;
 }

@@ -5,7 +5,7 @@ namespace GFExcel\AddOn;
 use GFExcel\Action\ActionAware;
 use GFExcel\Action\ActionInterface;
 use GFExcel\Action\ActionAwareInteface;
-use GFExcel\Contract\TemplateAwareInterface;
+use GFExcel\Template\TemplateAwareInterface;
 use GFExcel\Language\Translate;
 use GFExcel\Template\TemplateAware;
 
@@ -169,6 +169,24 @@ abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareIntef
     public function single_setting_row_info(array $field): void
     {
         $this->single_setting_row_html($field);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * Wraps a select-element in a div for more visual control.
+     * @since $ver$
+     */
+    public function settings_select($field, $echo = true): string
+    {
+        $html = sprintf('<div class="gfexcel_select"><div class="gfexcel_select__arrow"><i class="fa fa-chevron-down"></i></div>%s</div>', parent::settings_select($field, false));
+
+        if ($echo) {
+            echo $html;
+        }
+
+        return $html;
+
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace GFExcel\Contract;
+namespace GFExcel\Template;
 
 /**
  * Interface that makes a class Template aware. This makes it able to register template paths and render templates.

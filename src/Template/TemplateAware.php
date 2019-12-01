@@ -3,7 +3,7 @@
 namespace GFExcel\Template;
 
 /**
- * Trait to complement {@see GFExcel\Contract\TemplateAwareInterface}.
+ * Trait to complement {@see GFExcel\Template\TemplateAwareInterface}.
  * @since $ver$
  */
 trait TemplateAware

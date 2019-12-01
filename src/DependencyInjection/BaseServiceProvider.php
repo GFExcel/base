@@ -4,7 +4,7 @@ namespace GFExcel\DependencyInjection;
 
 use GFExcel\Action\ActionAwareInteface;
 use GFExcel\Action\ActionInterface;
-use GFExcel\Contract\TemplateAwareInterface;
+use GFExcel\Template\TemplateAwareInterface;
 use GFExcel\Repository\FormRepository;
 use GFExcel\Repository\FormRepositoryInterface;
 use League\Container\ServiceProvider\AbstractServiceProvider;
