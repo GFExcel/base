@@ -13,8 +13,8 @@ interface FormRepositoryInterface
      * @since $ver$
      * @param int $form_id The form id to retrieve the entries from.
      * @param string[] $search_criteria (Optional) search criteria.
-     * @param string [] $sorting (Optinal) sorting criteria.
-     * @return mixed[]|iterable All entries for a form.
+     * @param string [] $sorting (Optional) sorting criteria.
+     * @return iterable All entries for a form.
      */
     public function getEntries(int $form_id, array $search_criteria = [], array $sorting = []): iterable;
 
@@ -22,7 +22,7 @@ interface FormRepositoryInterface
      * Should return the download url of the form.
      * @since $ver$
      * @param array $settings The settings for a form.
-     * @return string|null The url, or null if not avaialbe.
+     * @return string|null The url, or null if not available.
      */
     public function getDownloadUrl(array $settings): ?string;
 }

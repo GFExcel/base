@@ -1,50 +1,16 @@
 <?php
 
-namespace GFExcel\AddOn;
+namespace GFExcel\Addon;
 
 use GFExcel\Action\ActionAware;
 use GFExcel\Action\ActionInterface;
-use GFExcel\Action\ActionAwareInteface;
+use GFExcel\Action\ActionAwareInterface;
 use GFExcel\Template\TemplateAwareInterface;
-use GFExcel\Language\Translate;
 use GFExcel\Template\TemplateAware;
 
-abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareInteface, TemplateAwareInterface
+abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareInterface, TemplateAwareInterface
 {
-    use Translate, ActionAware, TemplateAware;
-
-    /**
-     * Holds the instance of the add-on.
-     * @since $ver$
-     * @var AbstractGFExcelAddon|null
-     */
-    protected static $instance = null;
-
-    /**
-     * Returns the single instance of this add-on.
-     * @since $ver$
-     */
-    public static function get_instance(): AbstractGFExcelAddon
-    {
-        if (self::$instance === null) {
-            throw new \RuntimeException('The container for Gravity Forms Entries in Excel is not set properly.');
-        }
-
-        return self::$instance;
-    }
-
-    /**
-     * Setter for the current instance.
-     *
-     * Used to retrieve the instance from the container.
-     *
-     * @since $ver$
-     * @param AbstractGFExcelAddon $instance
-     */
-    public static function set_instance(AbstractGFExcelAddon $instance): void
-    {
-        self::$instance = $instance;
-    }
+    use AddonHelperTrait, ActionAware, TemplateAware;
 
     /**
      * {@inheritdoc}
@@ -211,7 +177,7 @@ abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareIntef
 
 
     /**
-     * Add's submit button with an action.
+     * Adds submit button with an action.
      *
      * Makes this a sumbit `button` instead of an `input`.
      * @since $ver$

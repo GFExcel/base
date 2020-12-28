@@ -15,7 +15,7 @@ trait TemplateAware
      */
     protected $template_folders = [];
 
-   /**
+   /**`
     * {@inheritdoc}
     * @since $ver$
     */

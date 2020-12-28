@@ -138,6 +138,6 @@ class ConcreteField implements FieldInterface
         // Yielding results to make sure the combiner can take generators.
         foreach ($this->rows as $row) {
             yield $row;
-        };
+        }
     }
 }

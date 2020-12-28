@@ -10,7 +10,7 @@ interface FieldInterface
     /**
      * Should return the name of every column this field produces.
      * @since $ver$
-     * @return iterable|string[] The column name.
+     * @return string[] The column name.
      */
     public function getColumns(): array;
 

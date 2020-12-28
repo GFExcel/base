@@ -1,7 +1,7 @@
 <?php
 /**
  * Template for filtering and downloading.
- * @var \GFExcel\AddOn\AbstractGFExcelAddon $this
+ * @var GFExcel\AddOn\AddonInterface $this
  */
 ?>
 <div class="download-block">
@@ -19,8 +19,8 @@
         <?= $this->single_setting([
             'type' => 'button',
             'class' => 'button-primary',
-            'label' => $this->translate('Download', true),
+            'label' => esc_html__('Download'),
             'icon' => '<i class="fa fa-download"></i>',
-        ]); ?>
+        ]) ?>
     </div>
 </div>

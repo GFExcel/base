@@ -3,7 +3,7 @@
 namespace GFExcel\Tests\Action;
 
 use GFExcel\Action\AbstractAction;
-use GFExcel\AddOn\AbstractGFExcelAddon;
+use GFExcel\Addon\AddonInterface;
 use PHPUnit\Framework\TestCase;
 
 class AbstractActionTest extends TestCase
@@ -42,7 +42,7 @@ class ConcreteAction extends AbstractAction
     /**
      * {@inheritdoc}
      */
-    public function fire(AbstractGFExcelAddon $addon, array $form): void
+    public function fire(AddonInterface $addon, array $form): void
     {
         // empty by design.
     }

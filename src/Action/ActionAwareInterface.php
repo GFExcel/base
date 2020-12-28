@@ -2,9 +2,11 @@
 
 namespace GFExcel\Action;
 
-use GFExcel\Action\ActionInterface;
-
-interface ActionAwareInteface
+/**
+ * Interface that makes an addon action aware.
+ * @since $ver$
+ */
+interface ActionAwareInterface
 {
     /**
      * The string an Action must be tagged with.
@@ -16,7 +18,7 @@ interface ActionAwareInteface
     /**
      * Should set all tagged actions on the class.
      * @since $ver$
-     * @param ActionInterface $actions The actions.
+     * @param ActionInterface[] $actions The actions.
      */
     public function setActions(array $actions): void;
 
@@ -31,7 +33,7 @@ interface ActionAwareInteface
      * Should return whether this action is available.
      * @since $ver$
      * @param string $action The action name.
-     * @return bool Whether this action is avaiable.
+     * @return bool Whether this action is available.
      */
     public function hasAction(string $action): bool;
 
@@ -40,7 +42,7 @@ interface ActionAwareInteface
      * @since $ver$
      * @param string $action The action name.
      * @return ActionInterface The action.
-     * @throws \Exception When action is not available.
+     * @throws \RuntimeException When action is not available.
      */
     public function getAction(string $action): ActionInterface;
 }

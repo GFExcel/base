@@ -58,6 +58,34 @@ class FormRepository implements FormRepositoryInterface
     }
 
     /**
+     * Returns the fields for a form.
+     * @since $ver$
+     * @param int $form_id The form id.
+     * @return \GF_Field[][] The form fields.
+     */
+    public function getFields(int $form_id): array
+    {
+        if (!$form = $this->api->get_form($form_id)) {
+            return [];
+        }
+
+        $repository = new FieldsRepository($form);
+        $disabled_fields = $repository->getDisabledFields();
+        $all_fields = $repository->getFields(true);
+
+        $active_fields = $inactive_fields = [];
+        foreach ($all_fields as $field) {
+            $array_name = in_array($field->id, $disabled_fields, false) ? 'inactive_fields' : 'active_fields';
+            $$array_name[] = $field;
+        }
+
+        return [
+            'disabled' => $inactive_fields,
+            'enabled' => $repository->sortFields($active_fields),
+        ];
+    }
+
+    /**
      * {@inheritdoc}
      * @since $ver$
      * @todo: implement.

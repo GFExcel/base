@@ -1,7 +1,7 @@
 <?php
 /**
  * Button template that renders a button.
- * @var \GFExcel\AddOn\AbstractGFExcelAddon $this
+ * @var GFExcel\AddOn\AddonInterface $this
  */
 echo sprintf(
     '<button type="submit" name="%s" value="%s" %s>%s %s</button>',

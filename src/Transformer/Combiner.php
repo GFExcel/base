@@ -2,6 +2,9 @@
 
 namespace GFExcel\Transformer;
 
+/**
+ * @since $ver$
+ */
 class Combiner implements FieldInterface
 {
     /**
@@ -26,11 +29,12 @@ class Combiner implements FieldInterface
     {
         // always start at zero.
         $column_index = 0;
+        // Keep columns in internal array, so we only merge once.
+        $columns = [];
 
         foreach ($fields as $field) {
             // Add columns to the internal array.
-            $this->columns = array_merge($this->columns, $field->getColumns());
-            $field_column_count = count($field->getColumns());
+            $columns[] = $field->getColumns();
 
             // Iterate every row a field returns.
             $i = 0;
@@ -47,8 +51,11 @@ class Combiner implements FieldInterface
             }
 
             // Keep track of the current column count.
-            $column_index += $field_column_count;
+            $column_index += count($field->getColumns());
         }
+
+        // merge columns into one "row"
+        $this->columns = array_merge($this->columns, ...$columns);
 
         // Now that we have all rows and data, fill out the remaining missing cells.
         foreach ($this->rows as $i => $row) {

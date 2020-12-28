@@ -47,7 +47,7 @@ trait ActionAware
     public function getAction(string $action): ActionInterface
     {
         if (!$this->hasAction($action)) {
-            throw new \Exception(sprintf('Action "%s" is not implemented.', $action));
+            throw new \RuntimeException(sprintf('Action "%s" is not implemented.', $action));
         }
 
         return $this->actions[$action];
