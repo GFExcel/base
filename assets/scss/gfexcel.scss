@@ -125,7 +125,7 @@ ul.fields-select {
         font-size: 14px;
         line-height: 1.5rem;
         border-radius: .25rem;
-        height: auto;
+        height: auto !important;
         appearance: none;
         margin-bottom: 4px;
         margin-right: 4px;
@@ -190,9 +190,11 @@ ul.fields-select {
 
     button,
     input,
-    textarea,
-    select {
+    textarea {
         padding: .25rem .75rem;
+    }
+    select {
+      padding: .25rem 1.5rem .25rem .75rem;
     }
 
     .gfexcel_select {

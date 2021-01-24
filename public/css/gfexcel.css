@@ -127,7 +127,7 @@ ul.fields-select li div.move :hover {
   font-size: 14px;
   line-height: 1.5rem;
   border-radius: 0.25rem;
-  height: auto;
+  height: auto !important;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -203,9 +203,12 @@ ul.fields-select li div.move :hover {
 
 #tab_filtersets button,
 #tab_filtersets input,
-#tab_filtersets textarea,
-#tab_filtersets select {
+#tab_filtersets textarea {
   padding: 0.25rem 0.75rem;
+}
+
+#tab_filtersets select {
+  padding: 0.25rem 1.5rem 0.25rem 0.75rem;
 }
 
 #tab_filtersets .gfexcel_select {

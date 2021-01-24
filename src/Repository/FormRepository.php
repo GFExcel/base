@@ -89,9 +89,8 @@ class FormRepository implements FormRepositoryInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      * @since $ver$
-     * @todo: implement.
      */
     public function getDownloadUrl(array $settings): ?string
     {

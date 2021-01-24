@@ -21,5 +21,6 @@ class HashGeneratorTest extends TestCase
         $hash = (new HashGenerator())->generate();
         $this->assertIsString($hash);
         $this->assertEquals(32, strlen($hash));
+        $this->assertNotEquals($hash, (new HashGenerator())->generate());
     }
 }

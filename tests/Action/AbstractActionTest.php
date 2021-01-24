@@ -52,7 +52,7 @@ class ConcreteAction extends AbstractAction
      * @inheritdoc
      * @since $ver$
      */
-    public function fire(AddonInterface $addon, array $form): void
+    public function fire(\GFAddOn $addon, array $form): void
     {
         // empty by design.
     }
