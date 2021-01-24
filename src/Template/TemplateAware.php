@@ -3,13 +3,13 @@
 namespace GFExcel\Template;
 
 /**
- * Trait to complement {@see GFExcel\Template\TemplateAwareInterface}.
+ * Trait to complement {@see \GFExcel\Template\TemplateAwareInterface}.
  * @since $ver$
  */
 trait TemplateAware
 {
     /**
-     * Holds the folder that contain templates.
+     * Holds the folders that contain templates.
      * @since $ver$
      * @var string[]
      */
@@ -69,7 +69,7 @@ trait TemplateAware
         $file = $this->getTemplate($name);
 
         // Scope the template in a function to avoid variable leakage.
-        $template = function (string $file, array $context) {
+        $template = function (string $file, array $context): void {
             // set all provided arguments as variables.
             extract($context);
             require $file;

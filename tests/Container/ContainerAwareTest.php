@@ -6,6 +6,10 @@ use GFExcel\Container\ContainerAware;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 
+/**
+ * Unit tests for {@see ContainerAware}.
+ * @since $ver$
+ */
 class ContainerAwareTest extends TestCase
 {
     /**
@@ -15,6 +19,10 @@ class ContainerAwareTest extends TestCase
      */
     private $trait;
 
+    /**
+     * @inheritdoc
+     * @since $ver$
+     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -28,7 +36,7 @@ class ContainerAwareTest extends TestCase
      * Test case for {@see ContainerAware::setContainer} and {@see ContainerAware::getContaienr}.
      * @since $ver$
      */
-    public function testContainer()
+    public function testContainer(): void
     {
         $container = $this->createMock(ContainerInterface::class);
         $this->assertNull($this->trait->setContainer($container));

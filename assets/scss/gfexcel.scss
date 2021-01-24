@@ -56,7 +56,7 @@ ul.fields-select {
     }
 }
 
-#tab_gfentries-in-excel {
+#tab_filtersets {
     margin: 0;
     color: #364449;
 
@@ -72,7 +72,8 @@ ul.fields-select {
         margin-bottom: 5px;
     }
 
-    table.gforms_form_settings th {
+    table.gforms_form_settings th,
+    table.gforms_form_settings strong {
         color: #5c6a70;
         padding: .5rem 2rem .5rem 0;
         font-weight: 600;
@@ -156,7 +157,7 @@ ul.fields-select {
     }
 
     input[type=radio]::before {
-        margin: 5px;
+        margin: 4px;
     }
 
     input[type=radio] {

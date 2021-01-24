@@ -25,6 +25,7 @@ class TemplateAwareTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->trait = new class {
           use TemplateAware;
         };
@@ -78,7 +79,7 @@ class TemplateAwareTest extends TestCase
     {
         return [
             'file1' => ['file1', 'Content of file1.php'],
-            'file 2' => ['file1', 'Content of file1.php'],
+            'file 2' => ['file2', 'Content of file2.php'],
             'file_with_variables' => [
                 'file_with_variables',
                 'Four Five Six',

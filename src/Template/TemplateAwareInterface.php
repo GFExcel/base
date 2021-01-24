@@ -9,7 +9,7 @@ namespace GFExcel\Template;
 interface TemplateAwareInterface
 {
     /**
-     * Add's a folder path to the class.
+     * Adds a folder path to the class.
      * @since $ver$
      * @param string $folder The path to the folder.
      */

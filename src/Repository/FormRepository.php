@@ -2,6 +2,8 @@
 
 namespace GFExcel\Repository;
 
+use GFExcel\GFExcel;
+
 /**
  * Repository to retrieve all information for a form.
  * @since $ver$
@@ -62,6 +64,7 @@ class FormRepository implements FormRepositoryInterface
      * @since $ver$
      * @param int $form_id The form id.
      * @return \GF_Field[][] The form fields.
+     * @todo fix me, i don't like this.
      */
     public function getFields(int $form_id): array
     {
@@ -76,7 +79,7 @@ class FormRepository implements FormRepositoryInterface
         $active_fields = $inactive_fields = [];
         foreach ($all_fields as $field) {
             $array_name = in_array($field->id, $disabled_fields, false) ? 'inactive_fields' : 'active_fields';
-            $$array_name[] = $field;
+            ${$array_name}[] = $field;
         }
 
         return [
@@ -96,6 +99,20 @@ class FormRepository implements FormRepositoryInterface
             return null;
         }
 
-        return sprintf('%s/%s', 'some_url', $hash);
+        $blogurl = get_bloginfo('url');
+        if (strpos($hash, $blogurl) !== false) {
+            return $hash;
+        }
+
+        $permalink = '/index.php?' . GFExcel::KEY_ACTION . '=%s&' . GFExcel::KEY_HASH . '=%s';
+        $action = GFExcel::$slug;
+
+        if (get_option('permalink_structure')) {
+            $permalink = '/%s/%s';
+        } else {
+            $hash = urlencode($hash);
+        }
+
+        return $blogurl . sprintf($permalink, $action, $hash);
     }
 }

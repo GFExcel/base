@@ -59,26 +59,27 @@ ul.fields-select li div.move :hover {
   outline: none !important;
 }
 
-#tab_gfentries-in-excel {
+#tab_filtersets {
   margin: 0;
   color: #364449;
   font-size: 14px;
   line-height: 1.5rem;
 }
 
-#tab_gfentries-in-excel .mr-1 {
+#tab_filtersets .mr-1 {
   margin-right: 4px;
 }
 
-#tab_gfentries-in-excel .mr-2 {
+#tab_filtersets .mr-2 {
   margin-right: 8px;
 }
 
-#tab_gfentries-in-excel .gaddon-setting-radio {
+#tab_filtersets .gaddon-setting-radio {
   margin-bottom: 5px;
 }
 
-#tab_gfentries-in-excel table.gforms_form_settings th {
+#tab_filtersets table.gforms_form_settings th,
+#tab_filtersets table.gforms_form_settings strong {
   color: #5c6a70;
   padding: 0.5rem 2rem 0.5rem 0;
   font-weight: 600;
@@ -87,42 +88,42 @@ ul.fields-select li div.move :hover {
   line-height: 1.25rem;
 }
 
-#tab_gfentries-in-excel .gform_panel > h3 {
+#tab_filtersets .gform_panel > h3 {
   padding: 10px 0;
   margin-bottom: 0;
 }
 
-#tab_gfentries-in-excel .gf_settings_description {
+#tab_filtersets .gf_settings_description {
   color: #8a9fa8;
   margin-top: 0;
 }
 
-#tab_gfentries-in-excel label {
+#tab_filtersets label {
   color: #8a9fa8;
   font-size: 14px;
   font-weight: normal;
 }
 
-#tab_gfentries-in-excel h4.gf_settings_subgroup_title {
+#tab_filtersets h4.gf_settings_subgroup_title {
   font-size: 18px;
   font-weight: normal;
   margin: 1rem 0;
 }
 
-#tab_gfentries-in-excel .gaddon-first-section h4.gf_settings_subgroup_title {
+#tab_filtersets .gaddon-first-section h4.gf_settings_subgroup_title {
   margin-top: 0;
 }
 
-#tab_gfentries-in-excel .gaddon-section {
+#tab_filtersets .gaddon-section {
   padding: 10px 0;
   margin-bottom: 0;
 }
 
-#tab_gfentries-in-excel button,
-#tab_gfentries-in-excel input,
-#tab_gfentries-in-excel select,
-#tab_gfentries-in-excel textarea,
-#tab_gfentries-in-excel .gfexcel_select {
+#tab_filtersets button,
+#tab_filtersets input,
+#tab_filtersets select,
+#tab_filtersets textarea,
+#tab_filtersets .gfexcel_select {
   font-size: 14px;
   line-height: 1.5rem;
   border-radius: 0.25rem;
@@ -134,80 +135,80 @@ ul.fields-select li div.move :hover {
   margin-right: 4px;
 }
 
-#tab_gfentries-in-excel input,
-#tab_gfentries-in-excel textarea,
-#tab_gfentries-in-excel select {
+#tab_filtersets input,
+#tab_filtersets textarea,
+#tab_filtersets select {
   border: 1px solid #c4cfd4;
 }
 
-#tab_gfentries-in-excel input:focus,
-#tab_gfentries-in-excel textarea:focus,
-#tab_gfentries-in-excel select:focus {
+#tab_filtersets input:focus,
+#tab_filtersets textarea:focus,
+#tab_filtersets select:focus {
   box-shadow: none;
   outline: none;
   border: 1px solid #8a9fa8;
 }
 
-#tab_gfentries-in-excel input[readonly],
-#tab_gfentries-in-excel textarea[readonly],
-#tab_gfentries-in-excel select[readonly] {
+#tab_filtersets input[readonly],
+#tab_filtersets textarea[readonly],
+#tab_filtersets select[readonly] {
   background-color: #e2e7e9;
 }
 
-#tab_gfentries-in-excel input[type=checkbox],
-#tab_gfentries-in-excel input[type=radio] {
+#tab_filtersets input[type=checkbox],
+#tab_filtersets input[type=radio] {
   height: 18px;
   width: 18px;
   margin: 0 4px 0 0;
 }
 
-#tab_gfentries-in-excel input[type=checkbox]::before {
+#tab_filtersets input[type=checkbox]::before {
   margin: -2px 0 0 -3px;
 }
 
-#tab_gfentries-in-excel input[type=radio]::before {
-  margin: 5px;
+#tab_filtersets input[type=radio]::before {
+  margin: 4px;
 }
 
-#tab_gfentries-in-excel input[type=radio] {
+#tab_filtersets input[type=radio] {
   border-radius: 50%;
 }
 
-#tab_gfentries-in-excel .gaddon-setting-radio,
-#tab_gfentries-in-excel .gaddon-setting-checkbox {
+#tab_filtersets .gaddon-setting-radio,
+#tab_filtersets .gaddon-setting-checkbox {
   margin-bottom: 0.5rem;
 }
 
-#tab_gfentries-in-excel .gaddon-setting-radio label,
-#tab_gfentries-in-excel .gaddon-setting-checkbox label {
+#tab_filtersets .gaddon-setting-radio label,
+#tab_filtersets .gaddon-setting-checkbox label {
   color: #5c6a70;
   -webkit-box-flex: 1;
           flex: 1;
 }
 
-#tab_gfentries-in-excel .gaddon-setting-radio label,
-#tab_gfentries-in-excel .gaddon-setting-checkbox {
+#tab_filtersets .gaddon-setting-radio label,
+#tab_filtersets .gaddon-setting-checkbox {
   display: -webkit-box;
   display: flex;
 }
 
-#tab_gfentries-in-excel .gaddon-select {
+#tab_filtersets .gaddon-select {
   width: auto;
 }
 
-#tab_gfentries-in-excel button {
+#tab_filtersets button {
   box-shadow: none;
   outline: none;
 }
 
-#tab_gfentries-in-excel button,
-#tab_gfentries-in-excel input,
-#tab_gfentries-in-excel textarea,
-#tab_gfentries-in-excel select {
+#tab_filtersets button,
+#tab_filtersets input,
+#tab_filtersets textarea,
+#tab_filtersets select {
   padding: 0.25rem 0.75rem;
 }
 
-#tab_gfentries-in-excel .gfexcel_select {
+#tab_filtersets .gfexcel_select {
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
   background-color: #FFF;
   border-radius: 0.25rem;
@@ -216,7 +217,7 @@ ul.fields-select li div.move :hover {
   cursor: pointer;
 }
 
-#tab_gfentries-in-excel .gfexcel_select .gfexcel_select__arrow {
+#tab_filtersets .gfexcel_select .gfexcel_select__arrow {
   position: absolute;
   right: 0;
   top: 0;
@@ -233,7 +234,7 @@ ul.fields-select li div.move :hover {
           align-items: center;
 }
 
-#tab_gfentries-in-excel .gfexcel_select select {
+#tab_filtersets .gfexcel_select select {
   cursor: pointer;
   padding-right: 2.75rem;
   margin: 0;

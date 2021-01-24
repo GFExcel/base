@@ -2,12 +2,14 @@
 
 namespace GFExcel\Generator;
 
-use GFExcel\Generator\HashGeneratorInterface;
-
+/**
+ * Generates a random hash.
+ * @since $ver$
+ */
 class HashGenerator implements HashGeneratorInterface
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      * @since $ver$
      * @throws \Exception When it was not possible to gather sufficient entropy.
      */

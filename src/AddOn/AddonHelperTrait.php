@@ -42,16 +42,6 @@ trait AddonHelperTrait
     }
 
     /**
-     * Render html row properly.
-     * @since $ver$
-     * @param array $field The field object.
-     */
-    public function single_setting_row_html(array $field): void
-    {
-        $this->single_setting_row_save($field);
-    }
-
-    /**
      * Render button row properly.
      * @since $ver$
      * @param array $field The field object.
@@ -59,29 +49,6 @@ trait AddonHelperTrait
     public function single_setting_row_button(array $field): void
     {
         $this->single_setting_row_save($field);
-    }
-
-    /**
-     * Render info row properly.
-     * @since $ver$
-     * @param array $field The field object.
-     */
-    public function single_setting_row_info(array $field): void
-    {
-        $this->single_setting_row_html($field);
-    }
-
-    /**
-     * @inheritdoc
-     * Fix returning of posted values of fields without a name.
-     * @since $ver$
-     */
-    public function get_posted_settings(): array
-    {
-        $settings = parent::get_posted_settings();
-        unset($settings['']); // remove empty name field.
-
-        return $settings;
     }
 
     /**
@@ -113,14 +80,18 @@ trait AddonHelperTrait
      */
     public function single_setting_row($field)
     {
-        $display = rgar($field, 'hidden') || rgar($field, 'type') == 'hidden' ? 'style="display:none;"' : '';
+        $should_display = ($hidden = rgar($field, 'hidden')) || rgar($field, 'type') === 'hidden';
+        if (is_callable($hidden)) {
+            $should_display = (bool) $hidden($field);
+        }
+        $display = $should_display ? 'style="display:none;"' : '';
 
         // Prepare setting description.
         $description = rgar($field, 'description')
             ? '<span class="gf_settings_description">' . $field['description'] . '</span>'
             : null;
 
-        $default_full_screen = ['sort-fields'];
+        $default_full_screen = ['sort-fields', 'html', 'info'];
         $full_screen = (bool) ($field['full_screen'] ?? in_array($field['type'] ?? '', $default_full_screen, true));
         ?>
 
@@ -258,5 +229,25 @@ trait AddonHelperTrait
     {
         // prevents adding unwanted default save button.
         return $sections;
+    }
+
+    /**
+     * Helper function that adds (and translates) a message.
+     * @since $ver$
+     * @param string $message The message.
+     */
+    public function add_message(string $message): void
+    {
+        \GFCommon::add_message(__($message));
+    }
+
+    /**
+     * Helper function that adds (and translates) an error message.
+     * @since $ver$
+     * @param string $message The error message.
+     */
+    public function add_error_message(string $message): void
+    {
+        \GFCommon::add_error_message(__($message));
     }
 }

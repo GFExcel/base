@@ -7,6 +7,10 @@ use GFExcel\Action\ActionInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Unit tests for {@see ActionAware}.
+ * @since $ver$
+ */
 class ActionAwareTest extends TestCase
 {
     /**
@@ -25,15 +29,23 @@ class ActionAwareTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->trait = new TestActionAware();
-        $this->actions = [$this->mockAction('mock1'), $this->mockAction('mock2'), $this->mockAction('mock3')];
+
+        $this->trait = new class {
+            use ActionAware;
+        };
+
+        $this->actions = [
+            $this->mockAction('mock1'),
+            $this->mockAction('mock2'),
+            $this->mockAction('mock3'),
+        ];
     }
 
     /**
      * Test case for {@see ActionAware::setActions} and {@see ActionAware::getActions}.
      * @since $ver$
      */
-    public function testActions()
+    public function testActions(): void
     {
         $this->assertEmpty($this->trait->getActions());
 
@@ -48,7 +60,7 @@ class ActionAwareTest extends TestCase
      * Test case for {@see ActionAware::hasAction}.
      * @since $ver$
      */
-    public function testHasAction()
+    public function testHasAction(): void
     {
         $this->trait->setActions($this->actions);
 
@@ -62,7 +74,7 @@ class ActionAwareTest extends TestCase
      * Test case for {@see ActionAware::getAction}.
      * @since $ver$
      */
-    public function testGetAction()
+    public function testGetAction(): void
     {
         $this->trait->setActions($this->actions);
 
@@ -75,7 +87,7 @@ class ActionAwareTest extends TestCase
      * Test case for {@see ActionAware::getAction}.
      * @since $ver$
      */
-    public function testGetActionWithException()
+    public function testGetActionWithException(): void
     {
         $this->trait->setActions($this->actions);
 
@@ -97,10 +109,4 @@ class ActionAwareTest extends TestCase
 
         return $mock;
     }
-
-}
-
-class TestActionAware
-{
-    use ActionAware;
 }

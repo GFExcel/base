@@ -16,7 +16,7 @@ class CombinerTest extends TestCase
      * Test case for {@see Combiner::getColumns}.
      * @since $ver$
      */
-    public function testGetColumns()
+    public function testGetColumns(): void
     {
         $field1 = new ConcreteField(['A'], [['1']]);
         $field2 = new ConcreteField(['B', 'C'], [['2', '3']]);
@@ -48,7 +48,7 @@ class CombinerTest extends TestCase
                 ],
                 [
                     ['1', '2'],
-                    [null, 3],
+                    [null, '3'],
                 ],
             ],
             'multiple_post_fill' => [
@@ -58,7 +58,7 @@ class CombinerTest extends TestCase
                 ],
                 [
                     ['1', '2'],
-                    [3, null],
+                    ['3', null],
                 ],
             ],
             'multiple_pre_post_fill' => [
@@ -86,7 +86,7 @@ class CombinerTest extends TestCase
      * @param array $expected The expected array output.
      * @dataProvider dataProviderForTestGetRows The data provider.
      */
-    public function testGetRows(array $fields, array $expected)
+    public function testGetRows(array $fields, array $expected): void
     {
         $this->assertEquals($expected, iterator_to_array((new Combiner($fields))->getRows()));
     }
@@ -98,7 +98,7 @@ class CombinerTest extends TestCase
      *
      * @since $ver$
      */
-    public function testGetRowsWithCombinerField()
+    public function testGetRowsWithCombinerField(): void
     {
         $field1 = new ConcreteField(['A'], [['1']]);
         $field2 = new ConcreteField(['B', 'C'], [['2', '3']]);
@@ -109,6 +109,10 @@ class CombinerTest extends TestCase
     }
 }
 
+/**
+ * Helper class to test {@see Combiner}.
+ * @since $ver$
+ */
 class ConcreteField implements FieldInterface
 {
     /**

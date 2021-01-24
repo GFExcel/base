@@ -2,8 +2,10 @@
 
 namespace GFExcel\Action;
 
-use GFExcel\Addon\AddonInterface;
-
+/**
+ * The interface an action should adhere to.
+ * @since $ver$
+ */
 interface ActionInterface
 {
     /**
@@ -16,8 +18,8 @@ interface ActionInterface
     /**
      * Performs the action.
      * @since $ver$
-     * @param AddonInterface $addon The Add on instance.
+     * @param \GFAddOn $addon The Add on instance.
      * @param array $form The form object.
      */
-    public function fire(AddonInterface $addon, array $form): void;
+    public function fire(\GFAddOn $addon, array $form): void;
 }

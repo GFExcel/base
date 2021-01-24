@@ -8,14 +8,18 @@ use GFExcel\Action\ActionAwareInterface;
 use GFExcel\Template\TemplateAwareInterface;
 use GFExcel\Template\TemplateAware;
 
+/**
+ * Base class that encapsulates shared logic between GFExcel Addon's.
+ * @since $ver$
+ */
 abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareInterface, TemplateAwareInterface
 {
     use AddonHelperTrait, ActionAware, TemplateAware;
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
-     * Add's support for different actions.
+     * Adds support for different actions.
      * @since $ver$
      */
     public function maybe_save_form_settings($form)
@@ -24,8 +28,11 @@ abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareInter
             parent::maybe_save_form_settings($form);
         } elseif ($this->is_postback() && !rgempty('gfexcel-action')) {
             if (!$this->current_user_can_any($this->_capabilities_form_settings)) {
-                \GFCommon::add_error_message(esc_html__("You don't have sufficient permissions to update the form settings.",
-                    'gravityforms'));
+                \GFCommon::add_error_message(esc_html__(
+                    "You don't have sufficient permissions to update the form settings.",
+                    'gravityforms'
+                ));
+
                 return false;
             }
 
@@ -33,29 +40,29 @@ abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareInter
                 // run action
                 $action->fire($this, $form);
             } else {
-                \GFCommon::add_error_message($this->translate('This action is not implemented.'));
+                \GFCommon::add_error_message(__('This action is not implemented.'));
             }
         }
     }
 
     /**
-     * Helper function that add's (and translates) a message.
+     * Helper function that adds (and translates) a message.
      * @since $ver$
      * @param string $message The message.
      */
     public function add_message(string $message): void
     {
-        \GFCommon::add_message($this->translate($message));
+        \GFCommon::add_message(__($message));
     }
 
     /**
-     * Helper function that add's (and translates) an error message.
+     * Helper function that adds (and translates) an error message.
      * @since $ver$
-     * @param string $message The errorr message.
+     * @param string $message The error message.
      */
     public function add_error_message(string $message): void
     {
-        \GFCommon::add_error_message($this->translate($message));
+        \GFCommon::add_error_message(__($message));
     }
 
     /**
@@ -145,14 +152,14 @@ abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareInter
      */
     public function settings_select($field, $echo = true): string
     {
-        $html = sprintf('<div class="gfexcel_select"><div class="gfexcel_select__arrow"><i class="fa fa-chevron-down"></i></div>%s</div>', parent::settings_select($field, false));
+        $html = sprintf('<div class="gfexcel_select"><div class="gfexcel_select__arrow"><i class="fa fa-chevron-down"></i></div>%s</div>',
+            parent::settings_select($field, false));
 
         if ($echo) {
             echo $html;
         }
 
         return $html;
-
     }
 
     /**
@@ -174,7 +181,6 @@ abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareInter
     {
         return '<i class="fa fa-table"></i>';
     }
-
 
     /**
      * Adds submit button with an action.
@@ -225,6 +231,7 @@ abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareInter
     public function settings_save($field, $echo = true): string
     {
         $field['name'] = 'gform-settings-save';
+
         return $this->settings_button($field, $echo);
     }
 
@@ -257,6 +264,7 @@ abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareInter
     {
         $settings = parent::get_posted_settings();
         unset($settings['']); // remove empty name field.
+
         return $settings;
     }
 
@@ -335,7 +343,6 @@ abstract class AbstractGFExcelAddon extends \GFAddon implements ActionAwareInter
             ];
         }, (array) $form['fields']));
     }
-
 
     /**
      * Get the assets path
