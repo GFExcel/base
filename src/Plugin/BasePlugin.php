@@ -26,12 +26,21 @@ abstract class BasePlugin
     protected $container;
 
     /**
-     * Creates the plugin.
-     * @param Container $container
+     * The assets directory for this plugin.
+     * @since $ver$
+     * @var string|null
      */
-    public function __construct(Container $container)
+    private $assets_dir;
+
+    /**
+     * Creates the plugin.
+     * @param Container $container The service container.
+     * @param string|null $assets_dir The assets directory.
+     */
+    public function __construct(Container $container, string $assets_dir = null)
     {
         $this->container = $container;
+        $this->assets_dir = $assets_dir;
     }
 
     /**
@@ -54,6 +63,10 @@ abstract class BasePlugin
 
             $instance::set_instance($instance);
             \GFAddOn::register($addon);
+
+            if ($this->assets_dir) {
+                $instance->setAssetsDir($this->assets_dir);
+            }
         }
 
         return $this;

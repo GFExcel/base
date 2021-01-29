@@ -2,6 +2,8 @@
 
 namespace GFExcel\Addon;
 
+use GFExcel\Template\TemplateAwareInterface;
+
 /**
  * Trait that provides some helper methods for an {@see AddonInterface}.
  * @since $ver$
@@ -61,12 +63,16 @@ trait AddonHelperTrait
      */
     public function single_setting($field): void
     {
-        $template = 'field/' . $field['type'];
-        if ($this->hasTemplate($template)) {
-            $field['attributes'] = $this->get_field_attributes($field);
-            $this->renderTemplate($template, $field);
-        } else {
+        if (!$this instanceof TemplateAwareInterface) {
             parent::single_setting($field);
+        } else {
+            $template = 'field/' . $field['type'];
+            if ($this->hasTemplate($template)) {
+                $field['attributes'] = $this->get_field_attributes($field);
+                $this->renderTemplate($template, $field);
+            } else {
+                parent::single_setting($field);
+            }
         }
     }
 
@@ -249,5 +255,37 @@ trait AddonHelperTrait
     public function add_error_message(string $message): void
     {
         \GFCommon::add_error_message(__($message));
+    }
+
+    /**
+     * Returns the base styles.
+     * @since $ver$
+     * @return array[] The base styles.
+     */
+    private function base_styles(): array
+    {
+        return [
+            [
+                'handle' => 'gfexcel-base',
+                'src' => $this->assets_dir . 'gfexcel/base/css/gfexcel.css',
+                'enqueue' => [
+                    ['admin_page' => 'form_settings', 'tab' => $this->get_slug()],
+                ],
+            ]
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     *
+     * Wrap settings with additional classes.
+     *
+     * @since $ver$
+     */
+    public function form_settings($form)
+    {
+        printf('<div class="gfexcel-addon gfexcel-addon-%s">', $this->get_slug());
+        parent::form_settings($form);
+        print('</div>');
     }
 }

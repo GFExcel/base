@@ -16,6 +16,13 @@ trait AddonTrait
     private static $_instance;
 
     /**
+     * The assets directory for this plugin.
+     * @since $ver$
+     * @var string|null
+     */
+    private $assets_dir;
+
+    /**
      * @inheritdoc
      * @since $ver$
      */
@@ -44,5 +51,14 @@ trait AddonTrait
         }
 
         return self::$_instance;
+    }
+
+    /**
+     * @inheritdoc
+     * @since $ver$
+     */
+    public function setAssetsDir(string $assets_dir): void
+    {
+        $this->assets_dir = $assets_dir;
     }
 }
