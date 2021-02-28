@@ -3,7 +3,7 @@
  * Group template that renders all fields in the same spot.
  * @since $ver$
  * @var mixed[] $fields
- * @var GFExcel\AddOn\AddonInterface $this
+ * @var GFExcel\Addon\AddonInterface $this
  */
 echo '<div>';
 foreach ($fields as $field) {

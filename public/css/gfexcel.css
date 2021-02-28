@@ -159,6 +159,12 @@ ul.fields-select li div.move :hover {
   background-color: #e2e7e9;
 }
 
+.gform_tab_content .gfexcel-addon input.large-text,
+.gform_tab_content .gfexcel-addon textarea.large-text,
+.gform_tab_content .gfexcel-addon select.large-text {
+  max-width: 90%;
+}
+
 .gform_tab_content .gfexcel-addon input[type=checkbox],
 .gform_tab_content .gfexcel-addon input[type=radio] {
   height: 18px;

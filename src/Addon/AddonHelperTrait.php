@@ -288,4 +288,18 @@ trait AddonHelperTrait
         parent::form_settings($form);
         print('</div>');
     }
+
+    /**
+     * @inheritdoc
+     *
+     * Overwritten to inject action.
+     *
+     * @since $ver$
+     */
+    public function render_settings($sections): void
+    {
+        do_action('gfexcel_addon_pre_settings', $this);
+
+        parent::render_settings($sections);
+    }
 }
