@@ -16,7 +16,7 @@
   ],
   "require": {
     "league/container": "^3.3",
-    "phpoffice/phpspreadsheet": "~1.15.0"
+    "phpoffice/phpspreadsheet": "1.12"
   },
   "autoload": {
     "psr-4": {
