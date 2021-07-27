@@ -28,11 +28,11 @@ trait AddonHelperTrait
     /**
      * Adds a html settings field.
      * @since $ver$
-     * @param array $field The field object.
+     * @param array|object $field The field object.
      * @param bool $echo Whether to directly echo the html.
      * @return string The html.
      */
-    public function settings_html(array $field, bool $echo = true): string
+    public function settings_html($field, bool $echo = true): string
     {
         $html = $field['html'] ?? '';
 
