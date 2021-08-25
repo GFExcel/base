@@ -302,4 +302,20 @@ trait AddonHelperTrait
 
         parent::render_settings($sections);
     }
+
+	/**
+	 * Returns whether the download is enabled for the current form.
+	 *
+	 * @return bool
+	 */
+	public static function is_download_enabled(): bool {
+
+		if ( ! class_exists( '\GFExcel\GFExcel' ) ) {
+			return false;
+		}
+
+		$download_url = \GFExcel\GFExcel::url( rgget( 'id' ) );
+
+		return ! empty( $download_url );
+	}
 }
