@@ -318,4 +318,19 @@ trait AddonHelperTrait
 
 		return ! empty( $download_url );
 	}
+
+	/**
+	 * Determine if the current view is the screen for editing a form's feed settings.
+	 * Stub for GF 2.4.
+	 *
+     * @todo Remove once we drop GF 2.4 support
+	 * @return bool
+	 */
+	public function is_feed_edit_page() {
+		if ( $this->is_gravityforms_supported( '2.5-beta' ) ) {
+			return parent::is_feed_edit_page();
+		}
+
+		return 'gf_edit_forms' === rgget( 'page' ) && $this->get_slug() === rgget( 'subview' );
+	}
 }
