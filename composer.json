@@ -1,5 +1,5 @@
 {
-  "name": "gfexcel/base",
+  "name": "gravitykit/gravityexport-base",
   "description": "Base for GravityExport",
   "type": "library",
   "require-dev": {
