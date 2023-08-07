@@ -6,7 +6,7 @@ use League\Container\Container;
 use Psr\Container\ContainerInterface;
 
 /**
- * Trait that makes a class contiainer aware.
+ * Trait that makes a class container aware.
  * @since $ver$
  */
 trait ContainerAware
