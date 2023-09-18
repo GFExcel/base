@@ -3,17 +3,17 @@
 namespace GFExcel\ServiceProvider;
 
 use GFExcel\Action\ActionAwareInterface;
+use GFExcel\Container\ServiceProviderInterface;
 use League\Container\Container;
 use League\Container\Definition\DefinitionInterface;
 use League\Container\ServiceProvider\AbstractServiceProvider as LeagueAbstractServiceProviderAlias;
-use League\Container\ServiceProvider\BootableServiceProviderInterface;
 
 /**
  * Abstract service provider that provides helper methods.
  * @since $ver$
  */
 abstract class AbstractServiceProvider extends LeagueAbstractServiceProviderAlias implements
-    BootableServiceProviderInterface
+    ServiceProviderInterface
 {
     /**
      * List of classes the service provider provides.
