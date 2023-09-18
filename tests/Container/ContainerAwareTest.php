@@ -3,8 +3,8 @@
 namespace GFExcel\Tests\Container;
 
 use GFExcel\Container\ContainerAware;
+use GFExcel\Container\ContainerInterface;
 use PHPUnit\Framework\TestCase;
-use Psr\Container\ContainerInterface;
 
 /**
  * Unit tests for {@see ContainerAware}.
