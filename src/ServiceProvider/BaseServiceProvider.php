@@ -9,13 +9,12 @@ use GFExcel\Generator\HashGeneratorInterface;
 use GFExcel\Template\TemplateAwareInterface;
 use GFExcel\Repository\FormRepository;
 use GFExcel\Repository\FormRepositoryInterface;
-use League\Container\ServiceProvider\BootableServiceProviderInterface;
 
 /**
  * The service provider for the base of GFExcel.
  * @since $ver$
  */
-class BaseServiceProvider extends AbstractServiceProvider implements BootableServiceProviderInterface
+class BaseServiceProvider extends AbstractServiceProvider
 {
     /**
      * {@inheritdoc}
@@ -32,7 +31,7 @@ class BaseServiceProvider extends AbstractServiceProvider implements BootableSer
      */
     public function register(): void
     {
-        $container = $this->getLeagueContainer();
+        $container = $this->getContainer();
 
         $container->add(
             FormRepositoryInterface::class,
@@ -49,7 +48,7 @@ class BaseServiceProvider extends AbstractServiceProvider implements BootableSer
      */
     protected function getActions(): array
     {
-        $container = $this->getLeagueContainer();
+        $container = $this->getContainer();
         if (!$container->has(ActionAwareInterface::ACTION_TAG)) {
             return [];
         }
@@ -63,7 +62,7 @@ class BaseServiceProvider extends AbstractServiceProvider implements BootableSer
      */
     public function boot(): void
     {
-        $container = $this->getLeagueContainer();
+        $container = $this->getContainer();
 
         $container
             ->inflector(ActionAwareInterface::class, function (ActionAwareInterface $instance) {

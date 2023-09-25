@@ -3,7 +3,7 @@
 namespace GFExcel\Plugin;
 
 use GFExcel\Addon\AddonInterface;
-use League\Container\Container;
+use GFExcel\Container\ContainerInterface;
 
 /**
  * A base for a plugin to extend from.
@@ -21,7 +21,7 @@ abstract class BasePlugin
     /**
      * The container instance.
      * @since $ver$
-     * @var Container
+     * @var ContainerInterface
      */
     protected $container;
 
@@ -34,10 +34,10 @@ abstract class BasePlugin
 
     /**
      * Creates the plugin.
-     * @param Container $container The service container.
+     * @param ContainerInterface $container The service container.
      * @param string|null $assets_dir The assets directory.
      */
-    public function __construct(Container $container, string $assets_dir = null)
+    public function __construct(ContainerInterface $container, string $assets_dir = null)
     {
         $this->container = $container;
         $this->assets_dir = $assets_dir;

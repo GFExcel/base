@@ -2,11 +2,8 @@
 
 namespace GFExcel\Container;
 
-use League\Container\Container;
-use Psr\Container\ContainerInterface;
-
 /**
- * Trait that makes a class contiainer aware.
+ * Trait that makes a class container aware.
  * @since $ver$
  */
 trait ContainerAware
@@ -31,7 +28,7 @@ trait ContainerAware
     /**
      * Get the container instance for this class.
      * @since $ver$
-     * @return Container|null The container instance.
+     * @return ContainerInterface|null The container instance.
      */
     public function getContainer(): ?ContainerInterface
     {

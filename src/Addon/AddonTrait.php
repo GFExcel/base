@@ -40,6 +40,7 @@ trait AddonTrait
     /**
      * @inheritdoc
      * @since $ver$
+     * @return static
      */
     public static function get_instance(): AddonInterface
     {
